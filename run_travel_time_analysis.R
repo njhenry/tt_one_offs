@@ -113,6 +113,7 @@ travel_times_by_od_pair <- r5r::travel_time_matrix(
   origins = transit_stops,
   destinations = destinations,
   mode = "WALK",
+  walk_speed = 5.0,
   max_trip_duration = 5L
 )
 
@@ -122,4 +123,4 @@ min_times <- travel_times_by_od_pair[
   by = .(id = to_id)
 ]
 parcels_with_times <- merge(x = parcels, y = min_times, by = 'id', all.x = TRUE)
-sf::st_write(parcels_with_times, dsn = file.path(work_dir, 'parcels_with_times.gpkg'))
+sf::st_write(parcels_with_times, dsn = file.path(work_dir, 'parcels_with_times_v2.gpkg'))
